@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="searchViewModel"
+            type="com.example.movie.screens.search.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.search.SearchFragment">
+
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:contentDescription="@string/search_desc"
+            android:drawableTint="#90CAF9"
+            android:onClick="@{()->searchViewModel.onSearchStart()}"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@android:drawable/ic_menu_search"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_query"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/movie_query"
+            app:layout_constraintTop_toTopOf="@+id/movie_query" />
+
+        <EditText
+            android:id="@+id/movie_query"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autofillHints="Movie Search Query"
+            android:ems="10"
+            android:gravity="fill_horizontal"
+            android:hint="@string/search_hint"
+            android:inputType="textPersonName"
+            android:text="@={searchViewModel.query}"
+            app:layout_constraintEnd_toStartOf="@+id/search_btn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Search parameter" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="8dp"
+            android:indeterminate="true"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateTint="@color/colorPrimary"
+            android:scaleY="4"
+            app:isLoading="@{searchViewModel.status}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_btn" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+            app:layout_constraintVertical_bias="1.0"
+            app:movieList="@{searchViewModel.movies}"
+            tools:listitem="@layout/movie_item"
+            tools:itemCount="4"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

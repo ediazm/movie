@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Nike Movie App</string>
+    <string name="search">Search</string>
+    <string name="title">Title: %s</string>
+    <string name="year">Year: %s</string>
+    <string name="sort_desc">Year Desc.</string>
+    <string name="sort_asc">Year Asc.</string>
+    <string name="poster_desc">Movie Image</string>
+    <string name="search_hint">Movie Search</string>
+    <string name="search_desc">search for movies</string>
+    <string name="error_desc">Connection unavailable</string>
+    <string name="network_error">Network not available. Using cached data</string>
+</resources>
