@@ -1,7 +1,7 @@
 # Requirements
 The API key file must be placed at the same level as the app directory.
 It should be titled: <b>apikey.properties</b> and contain the values:
-API_KEY
+API_KEY<br>
 API_HOST
 
 <div>
